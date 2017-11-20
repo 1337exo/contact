@@ -105,7 +105,19 @@
       });
 
       QUnit.test("sort contact tests", function (assert) {
-        assert.ok(false);
+        var contacts = Contact.Contacts.instance().iterator();
+        var LastNameOfContacts = [];
+        while(contacts.hasNext()){
+          var contact = contacts.next();
+          LastNameOfContacts.push(contact.lastName());
+        }
+        LastNameOfContacts.sort();
+
+        for(var i = 1; i < LastNameOfContacts.length - 1; ++i){
+          $('#button_sort').click();
+          assert.ok($('#contacts').find('table').find('tbody').find('tr').eq(i).find('#cellLastName').text() ==  LastNameOfContacts[i-1])
+        }
+
       });
     </script>
     <!-- END - Les tests -->
