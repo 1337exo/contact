@@ -98,7 +98,10 @@
       });
 
       QUnit.test("remove contact tests", function (assert) {
-        assert.ok(false);
+        var contactToDelete = $('#contacts').find('table').find('tbody').find('tr').eq(1).attr('id');
+        $('#contacts').find('table').find('tbody').find('tr').eq(1).find('a').click();
+        var contactVerify = $('#contacts').find('table').find('tbody').find('tr').eq(1).attr('id');
+        assert.ok(contactToDelete != contactVerify);
       });
 
       QUnit.test("sort contact tests", function (assert) {
