@@ -74,7 +74,15 @@
       });
 
       QUnit.test("list tests", function (assert) {
-        assert.ok(false);
+        var iterator = Contact.Contacts.instance().iterator()
+        var i = 1;
+        while(iterator.hasNext()){
+          var contact = iterator.next();
+          assert.ok(contact.firstName() == $('#contacts').find('table').find('tbody').find('tr').eq(i).find('#cellFirstName').html()
+          && contact.lastName() == $('#contacts').find('table').find('tbody').find('tr').eq(i).find('#cellLastName').html());
+          ++i;
+        }
+
       });
 
       QUnit.test("first entry tests", function (assert) {
